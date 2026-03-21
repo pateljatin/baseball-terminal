@@ -33,7 +33,7 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
           "foreground": "#F4F3EE",
-          "background": "#8A4A2D",
+          "background": "#0C2C56",
           "template": " \ue718 {{ .Full }} ",
           "properties": {
             "display_mode": "files"
@@ -44,7 +44,7 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
           "foreground": "#F4F3EE",
-          "background": "#8A4A2D",
+          "background": "#0C2C56",
           "template": " \ue235 {{ .Full }} ",
           "properties": {
             "display_mode": "files"
