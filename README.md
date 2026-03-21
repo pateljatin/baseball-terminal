@@ -22,16 +22,7 @@ Five themes. Five vibes. One for every day of the week.
 
 > *Home whites under the lights. Navy and teal, the way Safeco intended.*
 
-| Segment | Color | Hex |
-|---------|-------|-----|
-| 🔵 Path | Navy | `#0C2C56` |
-| 🟢 Git | NW Green | `#005C5C` |
-| ⬛ Tools | Dark Navy | `#091E3A` |
-| Terminal BG | | `#0C2C56` |
-
-```
-  ~/projects/baseball-terminal   main ❯  node 22.0.0
-```
+![Mariners Classic theme preview](docs/screenshots/mariners-classic.png)
 
 ---
 
@@ -39,16 +30,7 @@ Five themes. Five vibes. One for every day of the week.
 
 > *Terra cotta warmth on a dark roast background. Claude meets the diamond.*
 
-| Segment | Color | Hex |
-|---------|-------|-----|
-| 🟠 Path | Crail | `#C15F3C` |
-| 🟤 Git | Cloudy | `#B1ADA1` |
-| ⬛ Tools | Dark warm | `#352A22` |
-| Terminal BG | | `#1C1410` |
-
-```
-  ~/projects/my-project   feature/my-branch ❯  node 22.0.0
-```
+![Claude Inspired theme preview](docs/screenshots/claude-inspired.png)
 
 ---
 
@@ -56,16 +38,7 @@ Five themes. Five vibes. One for every day of the week.
 
 > *The rarest jersey in the rotation. Deep teal, earned not given.*
 
-| Segment | Color | Hex |
-|---------|-------|-----|
-| 🟢 Path | NW Green | `#005C5C` |
-| 🔵 Git | Navy | `#0C2C56` |
-| ⬛ Tools | Dark Teal | `#002626` |
-| Terminal BG | | `#003333` |
-
-```
-  ~/projects/api-server   develop ❯  python 3.12
-```
+![Mariners NW Green theme preview](docs/screenshots/mariners-nw-green.png)
 
 ---
 
@@ -73,16 +46,7 @@ Five themes. Five vibes. One for every day of the week.
 
 > *Friday night. Rush blue and sundown gold. The trident glows.*
 
-| Segment | Color | Hex |
-|---------|-------|-----|
-| 🔵 Path | Rush Blue | `#1B3A8C` |
-| 🟡 Git | Sundown | `#F5C842` |
-| ⬛ Tools | Deep Blue | `#0F2259` |
-| Terminal BG | | `#1B3A8C` |
-
-```
-  ~/projects/baseball-terminal   main ❯  node 22.0.0
-```
+![Mariners City Connect theme preview](docs/screenshots/mariners-city-connect.png)
 
 ---
 
@@ -90,16 +54,7 @@ Five themes. Five vibes. One for every day of the week.
 
 > *Fauxback day. Cream background, navy letters, a nod to the old days.*
 
-| Segment | Color | Hex |
-|---------|-------|-----|
-| 🔵 Path | Navy on Cream | `#0C2C56` |
-| 🟢 Git | NW Green on Cream | `#005C5C` |
-| 🔴 Tools | Red accent | `#D50032` |
-| Terminal BG | | `#F5F0E0` |
-
-```
-  ~/code/baseball-terminal   main ❯  node 22.0.0
-```
+![Mariners Cream Sunday theme preview](docs/screenshots/mariners-cream-sunday.png)
 
 ---
 
