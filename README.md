@@ -6,11 +6,15 @@
 [![Works on Windows + Mac](https://img.shields.io/badge/platform-Windows%20%2B%20Mac-informational)](README.md)
 [![Powered by Oh My Posh](https://img.shields.io/badge/powered%20by-Oh%20My%20Posh-blueviolet)](https://ohmyposh.dev/)
 
+[![Live Theme Preview](https://img.shields.io/badge/🎨_Live_Preview-blue?style=for-the-badge)](https://pateljatin.github.io/baseball-terminal)
+
 ---
 
 ## What is this?
 
 Baseball teams wear different uniforms on different days — home whites on Monday, city connect on Friday night, cream fauxbacks on Sunday. Your terminal should too. **baseball-terminal** is a set of cross-platform [Oh My Posh](https://ohmyposh.dev/) themes that auto-rotate by day of week, built for [Claude Code](https://claude.ai) users who want their prompt to have some personality.
+
+→ **[Interactive theme preview →](https://pateljatin.github.io/baseball-terminal)**
 
 ---
 
