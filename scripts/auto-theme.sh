@@ -42,3 +42,37 @@ set-theme() {
     echo "No theme named '$name' in $THEME_DIR" >&2
   fi
 }
+
+# List all available themes with formatted table
+list-themes() {
+  echo ""
+  echo "  baseball-terminal — $TEAM themes"
+  echo "  ─────────────────────────────────────────────────────"
+  echo "  Name                       Day       Vibe"
+  echo "  ─────────────────────────────────────────────────────"
+  echo "  claude-inspired            Tue+Sat   Terra cotta, warm dark"
+  echo "  mariners-classic           Mon+Wed   Navy + NW Green"
+  echo "  mariners-nw-green          Thu       Deep teal"
+  echo "  mariners-city-connect      Fri       Rush Blue + Gold"
+  echo "  mariners-cream-sunday      Sun       Cream fauxback"
+  echo "  ─────────────────────────────────────────────────────"
+  echo "  Today ($DAY): $THEME_NAME"
+  echo ""
+  echo "  Usage: set-theme <name>   e.g. set-theme mariners-city-connect"
+  echo ""
+}
+
+# Tab-completion for set-theme — works in both Zsh and Bash
+if [ -n "$ZSH_VERSION" ]; then
+  _set_theme_completions() {
+    compadd $(ls "$THEME_DIR"/*.omp.json 2>/dev/null | xargs -n1 basename | sed 's/\.omp\.json$//')
+  }
+  compdef _set_theme_completions set-theme
+elif [ -n "$BASH_VERSION" ]; then
+  _set_theme_completions() {
+    local names
+    names=$(ls "$THEME_DIR"/*.omp.json 2>/dev/null | xargs -n1 basename | sed 's/\.omp\.json$//')
+    COMPREPLY=( $(compgen -W "$names" -- "${COMP_WORDS[COMP_CWORD]}") )
+  }
+  complete -F _set_theme_completions set-theme
+fi
