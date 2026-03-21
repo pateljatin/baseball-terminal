@@ -13,7 +13,7 @@
           "background": "#0C2C56",
           "template": " \uf07c {{ .Path }} ",
           "properties": {
-            "style": "folder"
+            "style": "full"
           }
         },
         {
