@@ -1,0 +1,107 @@
+name: Validate Theme
+
+on:
+  pull_request:
+    paths:
+      - 'teams/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find changed team folders
+        id: teams
+        run: |
+          teams=$(git diff --name-only ${{ github.event.pull_request.base.sha }}..HEAD \
+            | grep '^teams/' \
+            | cut -d'/' -f2 \
+            | sort -u \
+            | grep -v '^$')
+          echo "teams=$teams" >> "$GITHUB_OUTPUT"
+
+      - name: Validate theme files
+        run: |
+          status=0
+
+          for team in ${{ steps.teams.outputs.teams }}; do
+            echo "::group::Validating $team"
+            theme_dir="teams/$team/themes"
+
+            # Check themes directory exists
+            if [ ! -d "$theme_dir" ]; then
+              echo "::error::Missing themes directory: $theme_dir"
+              status=1
+              echo "::endgroup::"
+              continue
+            fi
+
+            # Check all 5 required theme files exist
+            required_files=(
+              "claude-inspired.omp.json"
+              "${team}-classic.omp.json"
+              "${team}-city-connect.omp.json"
+              "${team}-cream-sunday.omp.json"
+              "${team}-nw-green.omp.json"
+            )
+
+            # Handle team slugs with city names (e.g. seattle-mariners -> mariners)
+            # Also check with full slug as prefix
+            for file in "$theme_dir"/*.omp.json; do
+              basename "$file"
+            done | sort > /tmp/actual_themes.txt
+
+            echo "Found theme files:"
+            cat /tmp/actual_themes.txt
+
+            # Must have exactly 5 .omp.json files
+            count=$(wc -l < /tmp/actual_themes.txt)
+            if [ "$count" -ne 5 ]; then
+              echo "::error::Expected 5 theme files in $theme_dir, found $count"
+              status=1
+            fi
+
+            # claude-inspired.omp.json must exist
+            if [ ! -f "$theme_dir/claude-inspired.omp.json" ]; then
+              echo "::error::Missing required file: $theme_dir/claude-inspired.omp.json"
+              status=1
+            fi
+
+            # Validate each JSON file
+            for json_file in "$theme_dir"/*.omp.json; do
+              filename=$(basename "$json_file")
+
+              # Valid JSON check
+              if ! python3 -m json.tool "$json_file" > /dev/null 2>&1; then
+                echo "::error file=$json_file::Invalid JSON in $filename"
+                status=1
+                continue
+              fi
+
+              # Uppercase hex check — find any lowercase a-f in hex color codes
+              if grep -Pn '"#[0-9A-Fa-f]*[a-f][0-9A-Fa-f]*"' "$json_file" > /dev/null 2>&1; then
+                echo "::error file=$json_file::Lowercase hex colors found in $filename — all hex values must be UPPERCASE"
+                grep -Pn '"#[0-9A-Fa-f]*[a-f][0-9A-Fa-f]*"' "$json_file"
+                status=1
+              fi
+
+              # Must have _terminal_background field
+              if ! grep -q '_terminal_background' "$json_file"; then
+                echo "::error file=$json_file::Missing _terminal_background in $filename"
+                status=1
+              fi
+
+              echo "  ✓ $filename"
+            done
+
+            # Team README must exist
+            if [ ! -f "teams/$team/README.md" ]; then
+              echo "::error::Missing teams/$team/README.md"
+              status=1
+            fi
+
+            echo "::endgroup::"
+          done
+
+          exit $status

@@ -167,6 +167,8 @@ Every new terminal session picks the right theme automatically. Override anytime
 
 Don't modify `scripts/` or `setup/` — they read `TEAM` and find the right theme folder automatically.
 
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide, color source links, and PR checklist.
+
 ---
 
 ## Part of a bigger vision

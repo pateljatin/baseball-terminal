@@ -1,0 +1,87 @@
+name: Auto Label
+
+on:
+  pull_request:
+    paths:
+      - 'teams/**'
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect team and apply label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              per_page: 100,
+            });
+
+            const teams = new Set();
+            for (const file of files) {
+              const match = file.filename.match(/^teams\/([^/]+)\//);
+              if (match) teams.add(match[1]);
+            }
+
+            for (const team of teams) {
+              const label = `team: ${team}`;
+
+              // Create label if it doesn't exist
+              try {
+                await github.rest.issues.getLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label,
+                });
+              } catch {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label,
+                  color: '0C2C56',
+                  description: `Themes for ${team}`,
+                });
+              }
+
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: [label],
+              });
+
+              console.log(`Applied label: ${label}`);
+            }
+
+            // Also label as "new-team" for easy filtering
+            if (teams.size > 0) {
+              try {
+                await github.rest.issues.getLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: 'new-team',
+                });
+              } catch {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: 'new-team',
+                  color: '005C5C',
+                  description: 'PR adds a new team',
+                });
+              }
+
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['new-team'],
+              });
+            }
