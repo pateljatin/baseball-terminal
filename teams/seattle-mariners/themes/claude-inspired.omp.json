@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "_terminal_background": "#F4F3EE",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#F4F3EE",
+          "background": "#C15F3C",
+          "template": " \uf07c {{ .Path }} ",
+          "properties": {
+            "style": "folder"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#F4F3EE",
+          "background": "#B1ADA1",
+          "template": " \ue0a0 {{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }} ",
+          "properties": {
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          }
+        },
+        {
+          "type": "node",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#F4F3EE",
+          "background": "#8A4A2D",
+          "template": " \ue718 {{ .Full }} ",
+          "properties": {
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "python",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#F4F3EE",
+          "background": "#8A4A2D",
+          "template": " \ue235 {{ .Full }} ",
+          "properties": {
+            "display_mode": "files"
+          }
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#C15F3C",
+          "template": "\u276f "
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 2
+}
