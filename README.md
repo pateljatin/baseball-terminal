@@ -1,124 +1,240 @@
-# baseball-terminal
+# baseball-terminal ⚾
 
-Baseball-team-themed terminal setup for Claude Code users. Oh My Posh prompt
-themes that rotate by day of week — like your team wears different uniforms for
-home, away, and special games — your terminal changes too.
+**Your terminal wears a different uniform every day of the week.**
 
-Cross-platform: Windows PowerShell + macOS Zsh. Zero runtime dependencies beyond
-Oh My Posh, a Nerd Font, and optionally ccstatusline for the Claude Code statusline.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Works on Windows + Mac](https://img.shields.io/badge/platform-Windows%20%2B%20Mac-informational)](README.md)
+[![Powered by Oh My Posh](https://img.shields.io/badge/powered%20by-Oh%20My%20Posh-blueviolet)](https://ohmyposh.dev/)
 
-## What You Get
+---
 
-- **5 Oh My Posh themes per team** matching real uniform rotations
-- **Auto day-of-week switching** — Friday is City Connect night, Sunday is cream fauxback day
-- **Manual override** — `Set-Theme city-connect` (PowerShell) or `set-theme city-connect` (Zsh)
-- **Claude Code statusline** config via ccstatusline
-- **One-shot setup scripts** for Windows and Mac
+## What is this?
+
+Baseball teams wear different uniforms on different days — home whites on Monday, city connect on Friday night, cream fauxbacks on Sunday. Your terminal should too. **baseball-terminal** is a set of cross-platform [Oh My Posh](https://ohmyposh.dev/) themes that auto-rotate by day of week, built for [Claude Code](https://claude.ai) users who want their prompt to have some personality.
+
+---
+
+## Theme Preview
+
+Five themes. Five vibes. One for every day of the week.
+
+### 🔵 Classic — Monday + Wednesday
+
+> *Home whites under the lights. Navy and teal, the way Safeco intended.*
+
+| Segment | Color | Hex |
+|---------|-------|-----|
+| 🔵 Path | Navy | `#0C2C56` |
+| 🟢 Git | NW Green | `#005C5C` |
+| ⬛ Tools | Dark Navy | `#091E3A` |
+| Terminal BG | | `#0C2C56` |
+
+```
+  ~/projects/baseball-terminal   main ❯  node 22.0.0
+```
+
+---
+
+### 🟠 Claude Inspired — Tuesday + Saturday
+
+> *Terra cotta warmth on a dark roast background. Claude meets the diamond.*
+
+| Segment | Color | Hex |
+|---------|-------|-----|
+| 🟠 Path | Crail | `#C15F3C` |
+| 🟤 Git | Cloudy | `#B1ADA1` |
+| ⬛ Tools | Dark warm | `#352A22` |
+| Terminal BG | | `#1C1410` |
+
+```
+  ~/projects/my-project   feature/my-branch ❯  node 22.0.0
+```
+
+---
+
+### 🟢 NW Green — Thursday
+
+> *The rarest jersey in the rotation. Deep teal, earned not given.*
+
+| Segment | Color | Hex |
+|---------|-------|-----|
+| 🟢 Path | NW Green | `#005C5C` |
+| 🔵 Git | Navy | `#0C2C56` |
+| ⬛ Tools | Dark Teal | `#002626` |
+| Terminal BG | | `#003333` |
+
+```
+  ~/projects/api-server   develop ❯  python 3.12
+```
+
+---
+
+### 🟡 City Connect — Friday
+
+> *Friday night. Rush blue and sundown gold. The trident glows.*
+
+| Segment | Color | Hex |
+|---------|-------|-----|
+| 🔵 Path | Rush Blue | `#1B3A8C` |
+| 🟡 Git | Sundown | `#F5C842` |
+| ⬛ Tools | Deep Blue | `#0F2259` |
+| Terminal BG | | `#1B3A8C` |
+
+```
+  ~/projects/baseball-terminal   main ❯  node 22.0.0
+```
+
+---
+
+### 🟤 Cream Sunday — Sunday
+
+> *Fauxback day. Cream background, navy letters, a nod to the old days.*
+
+| Segment | Color | Hex |
+|---------|-------|-----|
+| 🔵 Path | Navy on Cream | `#0C2C56` |
+| 🟢 Git | NW Green on Cream | `#005C5C` |
+| 🔴 Tools | Red accent | `#D50032` |
+| Terminal BG | | `#F5F0E0` |
+
+```
+  ~/code/baseball-terminal   main ❯  node 22.0.0
+```
+
+---
 
 ## Quick Start
 
-### Windows (PowerShell)
+### **Windows (PowerShell)**
 
-```powershell
-git clone https://github.com/YOUR_USER/baseball-terminal.git
-cd baseball-terminal
-.\setup\windows-setup.ps1
+1. Clone the repo:
+   ```powershell
+   git clone https://github.com/YOUR_USER/baseball-terminal.git
+   cd baseball-terminal
+   ```
+
+2. Run the setup script:
+   ```powershell
+   .\setup\windows-setup.ps1
+   ```
+
+3. Restart your terminal. Done.
+
+### **Mac (Zsh)**
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/YOUR_USER/baseball-terminal.git
+   cd baseball-terminal
+   ```
+
+2. Run the setup script:
+   ```bash
+   chmod +x setup/mac-setup.sh
+   ./setup/mac-setup.sh
+   ```
+
+3. Restart your terminal. Done.
+
+The setup scripts install Oh My Posh and a Nerd Font if you don't already have them.
+
+---
+
+## Theme Commands
+
+Switch themes on the fly or see what's available.
+
+**List all themes:**
+
+```
+> List-Themes                              # PowerShell
+$ list-themes                              # Zsh / Bash
 ```
 
-### macOS (Zsh)
+```
+  baseball-terminal — seattle-mariners themes
+  ─────────────────────────────────────────────────────
+  Name                       Day       Vibe
+  ─────────────────────────────────────────────────────
+  claude-inspired            Tue+Sat   Terra cotta, warm dark
+  mariners-classic           Mon+Wed   Navy + NW Green
+  mariners-nw-green          Thu       Deep teal
+  mariners-city-connect      Fri       Rush Blue + Gold
+  mariners-cream-sunday      Sun       Cream fauxback
+  ─────────────────────────────────────────────────────
+  Today (Friday): mariners-city-connect
 
-```bash
-git clone https://github.com/YOUR_USER/baseball-terminal.git
-cd baseball-terminal
-chmod +x setup/mac-setup.sh
-./setup/mac-setup.sh
+  Usage: Set-Theme <name>   e.g. Set-Theme mariners-city-connect
 ```
 
-Restart your terminal. The theme auto-switches based on the day of the week.
-
-## Folder Structure
+**Switch to any theme:**
 
 ```
-baseball-terminal/
-  teams/
-    seattle-mariners/        # Reference implementation
-      themes/
-        mariners-classic.omp.json
-        mariners-nw-green.omp.json
-        mariners-city-connect.omp.json
-        mariners-cream-sunday.omp.json
-        claude-inspired.omp.json
-      README.md
-  scripts/
-    auto-theme.ps1           # Windows — day-of-week switcher
-    auto-theme.sh            # Mac/Linux — day-of-week switcher
-  setup/
-    windows-setup.ps1        # One-shot Windows bootstrap
-    mac-setup.sh             # One-shot Mac bootstrap
-  claude/
-    settings.json            # Claude Code statusline config
-  CLAUDE.md
-  README.md
-  LICENSE
+> Set-Theme mariners-city-connect          # PowerShell
+$ set-theme mariners-city-connect          # Zsh / Bash
 ```
 
-## Day-of-Week Schedule
+Tab completion is built in — press `Tab` after typing the command to cycle through theme names.
 
-| Day | Theme | Inspired By |
-|-----|-------|-------------|
-| Monday | Classic | Home jersey |
-| Tuesday | Claude Inspired | Claude brand collab |
-| Wednesday | Classic | Home jersey |
-| Thursday | NW Green (alt) | Alternate jersey (rarest) |
-| Friday | City Connect | Game night special |
-| Saturday | Claude Inspired | Claude brand collab |
-| Sunday | Cream Sunday | Fauxback Sunday alternate |
+---
 
-## Manual Override
+## Day Schedule
 
-Switch to any theme at any time without waiting for the right day:
+| Day | Theme | Uniform Inspiration | Auto? |
+|-----|-------|---------------------|-------|
+| Monday | Classic | Home white jersey | Yes |
+| Tuesday | Claude Inspired | Claude brand collab | Yes |
+| Wednesday | Classic | Home white jersey | Yes |
+| Thursday | NW Green | Alternate jersey (rarest) | Yes |
+| Friday | City Connect | Friday night special | Yes |
+| Saturday | Claude Inspired | Claude brand collab | Yes |
+| Sunday | Cream Sunday | Fauxback Sunday alternate | Yes |
 
-```powershell
-# PowerShell
-Set-Theme mariners-city-connect
+Every new terminal session picks the right theme automatically. Override anytime with `Set-Theme` / `set-theme`.
 
-# Zsh / Bash
-set-theme mariners-city-connect
-```
-
-## Requirements
-
-- [Oh My Posh](https://ohmyposh.dev/) — prompt engine
-- [Cascadia Code NF](https://github.com/microsoft/cascadia-code) — Nerd Font (Windows: Cascadia Code NF, Mac: CaskaydiaCove NF)
-- [ccstatusline](https://www.npmjs.com/package/ccstatusline) (optional) — Claude Code statusline
-
-The setup scripts install Oh My Posh and the font automatically if missing.
+---
 
 ## Adding Your Team
 
-1. Create `teams/<team-slug>/` (e.g. `teams/chicago-cubs/`)
+1. Create a folder: `teams/<team-slug>/` (e.g. `teams/chicago-cubs/`)
 2. Copy `teams/seattle-mariners/` as your starting template
-3. Replace all hex color values in the 5 `.omp.json` files with your team's palette
-4. Update `teams/<team-slug>/README.md` with your team name, colors, and sources
-5. Set the `TEAM` environment variable to your team slug:
+3. Replace every hex color in the 5 `.omp.json` theme files with your team's palette
+4. Update `teams/<team-slug>/README.md` with team name, colors, and sources
+5. Set the `TEAM` environment variable and restart:
    ```powershell
-   # PowerShell
-   $env:TEAM = "chicago-cubs"
-
-   # Zsh / Bash
-   export TEAM="chicago-cubs"
+   $env:TEAM = "chicago-cubs"        # PowerShell
+   export TEAM="chicago-cubs"        # Zsh / Bash
    ```
-6. Re-run the setup script or restart your terminal
 
-**Do not modify** files in `scripts/` or `setup/` — they are team-agnostic and
-read the `TEAM` variable to find the right `teams/` subfolder.
+Don't modify `scripts/` or `setup/` — they read `TEAM` and find the right theme folder automatically.
 
-## Available Teams
+---
+
+## Part of a bigger vision
+
+This is the **Seattle Mariners** reference implementation — the first team in what could be all 30.
+
+The architecture is team-agnostic: same scripts, same day-of-week rotation, same Oh My Posh engine. Only the colors change. Every team folder is self-contained under `teams/`.
+
+**Want to add your team?** PRs are welcome. Pick a team, build the 5 themes, and submit. The [Seattle Mariners folder](teams/seattle-mariners/) is your blueprint.
 
 | Team | Folder | Status |
 |------|--------|--------|
 | Seattle Mariners | `teams/seattle-mariners/` | Reference implementation |
+| *Your team here* | `teams/???/` | [Open a PR](https://github.com/YOUR_USER/baseball-terminal/pulls) |
 
-## License
+---
 
-MIT — see [LICENSE](LICENSE).
+## Requirements
+
+| Tool | What it does | Installed by setup? |
+|------|-------------|---------------------|
+| [Oh My Posh](https://ohmyposh.dev/) | Prompt theme engine | Yes |
+| [Cascadia Code NF](https://github.com/microsoft/cascadia-code) | Nerd Font for icons | Yes |
+| [ccstatusline](https://www.npmjs.com/package/ccstatusline) | Claude Code statusline | Optional |
+
+---
+
+MIT License — see [LICENSE](LICENSE).
+
+Built with [Claude Code](https://claude.ai/claude-code).

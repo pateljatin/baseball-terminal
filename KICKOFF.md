@@ -5,8 +5,8 @@ Use this file to bootstrap the repo with Claude Code in a fresh session.
 ## How to use
 
 ```
-cd C:\Users\jatin\code
-git clone https://github.com/pateljatin/baseball-terminal
+cd ~/projects
+git clone https://github.com/YOUR_USER/baseball-terminal
 cd baseball-terminal
 claude
 ```
