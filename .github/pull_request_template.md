@@ -9,7 +9,7 @@
 - [ ] `<slug>-classic.omp.json` — home uniform colors
 - [ ] `<slug>-nw-green.omp.json` — alternate uniform colors (rename to match your team's alt)
 - [ ] `<slug>-city-connect.omp.json` — city connect colors
-- [ ] `<slug>-cream-sunday.omp.json` — cream/fauxback colors
+- [ ] `<slug>-steelheads.omp.json` — Sunday throwback colors
 - [ ] `claude-inspired.omp.json` — unchanged from reference
 - [ ] Created `teams/<team-slug>/README.md` with color palette and sources
 - [ ] All hex colors are UPPERCASE
@@ -30,7 +30,7 @@ Paste a screenshot of each theme below:
 **City Connect:**
 <!-- screenshot -->
 
-**Cream Sunday:**
+**Steelheads:**
 <!-- screenshot -->
 
 **Claude Inspired:**

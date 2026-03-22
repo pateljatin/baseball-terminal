@@ -28,7 +28,7 @@ Every team needs exactly 5 `.omp.json` files in `teams/<team-slug>/themes/`:
 | `<slug>-classic.omp.json` | Home uniform — primary + secondary colors |
 | `<slug>-nw-green.omp.json` | Alternate uniform — your team's alternate jersey |
 | `<slug>-city-connect.omp.json` | City Connect — the special edition colors |
-| `<slug>-cream-sunday.omp.json` | Sunday fauxback — cream/retro vibe |
+| `<slug>-steelheads.omp.json` | Sunday throwback — Negro League tribute |
 | `claude-inspired.omp.json` | Claude collab — keep this one as-is |
 
 **Rules for theme files:**

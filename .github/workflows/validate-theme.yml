@@ -42,7 +42,7 @@ jobs:
               "claude-inspired.omp.json"
               "${team}-classic.omp.json"
               "${team}-city-connect.omp.json"
-              "${team}-cream-sunday.omp.json"
+              "${team}-steelheads.omp.json"
               "${team}-nw-green.omp.json"
             )
 
