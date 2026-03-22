@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "_terminal_background": "#F5F0E0",
+  "_terminal_background": "#1A1A1A",
   "blocks": [
     {
       "alignment": "left",
@@ -9,8 +9,8 @@
           "type": "path",
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
-          "foreground": "#F5F0E0",
-          "background": "#0C2C56",
+          "foreground": "#F0F0F0",
+          "background": "#2D2D2D",
           "template": " \uf07c {{ .Path }} ",
           "properties": {
             "style": "full"
@@ -20,8 +20,8 @@
           "type": "git",
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
-          "foreground": "#F5F0E0",
-          "background": "#005C5C",
+          "foreground": "#C8C8C8",
+          "background": "#111111",
           "template": " \ue0a0 {{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }} ",
           "properties": {
             "fetch_status": true,
@@ -32,8 +32,8 @@
           "type": "node",
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
-          "foreground": "#F5F0E0",
-          "background": "#D50032",
+          "foreground": "#999999",
+          "background": "#0D0D0D",
           "template": " \ue718 {{ .Full }} ",
           "properties": {
             "display_mode": "files"
@@ -43,8 +43,8 @@
           "type": "python",
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
-          "foreground": "#F5F0E0",
-          "background": "#D50032",
+          "foreground": "#999999",
+          "background": "#0D0D0D",
           "template": " \ue235 {{ .Full }} ",
           "properties": {
             "display_mode": "files"
@@ -60,7 +60,7 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#0C2C56",
+          "foreground": "#C8C8C8",
           "template": "\u276f "
         }
       ],

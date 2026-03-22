@@ -18,7 +18,7 @@ $ThemeMap = @{
   "Thursday"  = "mariners-nw-green"
   "Friday"    = "mariners-city-connect"
   "Saturday"  = "claude-inspired"
-  "Sunday"    = "mariners-cream-sunday"
+  "Sunday"    = "mariners-steelheads"
 }
 
 # Select theme by day
@@ -57,7 +57,7 @@ function List-Themes {
   Write-Host "  mariners-classic           Mon+Wed   Navy + NW Green" -ForegroundColor Yellow
   Write-Host "  mariners-nw-green          Thu       Deep teal" -ForegroundColor Yellow
   Write-Host "  mariners-city-connect      Fri 🔱    Rush Blue + Gold" -ForegroundColor Yellow
-  Write-Host "  mariners-cream-sunday      Sun       Cream fauxback" -ForegroundColor Yellow
+  Write-Host "  mariners-steelheads        Sun       Steelheads Negro League throwback (black + off-white)" -ForegroundColor Yellow
   Write-Host "  ─────────────────────────────────────────────────────" -ForegroundColor DarkGray
   Write-Host "  Today ($((Get-Date).DayOfWeek)): $ThemeName" -ForegroundColor Green
   Write-Host ""

@@ -12,7 +12,7 @@
 
 ## What is this?
 
-Baseball teams wear different uniforms on different days — home whites on Monday, city connect on Friday night, cream fauxbacks on Sunday. Your terminal should too. **baseball-terminal** is a set of cross-platform [Oh My Posh](https://ohmyposh.dev/) themes that auto-rotate by day of week, built for [Claude Code](https://claude.ai) users who want their prompt to have some personality.
+Baseball teams wear different uniforms on different days — home whites on Monday, city connect on Friday night, Steelheads throwbacks on Sunday. Your terminal should too. **baseball-terminal** is a set of cross-platform [Oh My Posh](https://ohmyposh.dev/) themes that auto-rotate by day of week, built for [Claude Code](https://claude.ai) users who want their prompt to have some personality.
 
 → **[Interactive theme preview →](https://pateljatin.github.io/baseball-terminal)**
 
@@ -54,11 +54,13 @@ Five themes. Five vibes. One for every day of the week.
 
 ---
 
-### 🟤 Cream Sunday — Sunday
+### ⚫ Steelheads — Sunday
 
-> *Fauxback day. Cream background, navy letters, a nod to the old days.*
+> *Honoring the 1946 Seattle Steelheads of the West Coast Negro Baseball League. Black and off-white, history on your prompt.*
 
-![Mariners Cream Sunday theme preview](docs/screenshots/mariners-cream-sunday.png)
+![Mariners Steelheads theme preview](docs/screenshots/mariners-steelheads.png)
+
+> **Note:** The steelheads screenshot will need updating to reflect the new color scheme.
 
 ---
 
@@ -119,7 +121,7 @@ $ list-themes                              # Zsh / Bash
   mariners-classic           Mon+Wed   Navy + NW Green
   mariners-nw-green          Thu       Deep teal
   mariners-city-connect      Fri       Rush Blue + Gold
-  mariners-cream-sunday      Sun       Cream fauxback
+  mariners-steelheads        Sun       Steelheads Negro League throwback (black + off-white)
   ─────────────────────────────────────────────────────
   Today (Friday): mariners-city-connect
 
@@ -147,7 +149,7 @@ Tab completion is built in — press `Tab` after typing the command to cycle thr
 | Thursday | NW Green | Alternate jersey (rarest) | Yes |
 | Friday | City Connect | Friday night special | Yes |
 | Saturday | Claude Inspired | Claude brand collab | Yes |
-| Sunday | Cream Sunday | Fauxback Sunday alternate | Yes |
+| Sunday | Steelheads | 1946 Seattle Steelheads Negro League throwback | Yes |
 
 Every new terminal session picks the right theme automatically. Override anytime with `Set-Theme` / `set-theme`.
 

@@ -19,7 +19,7 @@ case "$DAY" in
   Thursday)  THEME_NAME="mariners-nw-green" ;;
   Friday)    THEME_NAME="mariners-city-connect" ;;
   Saturday)  THEME_NAME="claude-inspired" ;;
-  Sunday)    THEME_NAME="mariners-cream-sunday" ;;
+  Sunday)    THEME_NAME="mariners-steelheads" ;;
 esac
 
 # Apply the theme
@@ -54,7 +54,7 @@ list-themes() {
   echo "  mariners-classic           Mon+Wed   Navy + NW Green"
   echo "  mariners-nw-green          Thu       Deep teal"
   echo "  mariners-city-connect      Fri       Rush Blue + Gold"
-  echo "  mariners-cream-sunday      Sun       Cream fauxback"
+  echo "  mariners-steelheads        Sun       Steelheads Negro League throwback (black + off-white)"
   echo "  ─────────────────────────────────────────────────────"
   echo "  Today ($DAY): $THEME_NAME"
   echo ""

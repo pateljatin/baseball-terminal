@@ -37,7 +37,7 @@ baseball-terminal/
                                                                                           - 5 Oh My Posh JSON themes per team, named by uniform type
                                                                                           - auto-theme scripts select theme by day of week:
                                                                                             - Friday    -> city-connect (game night)
-                                                                                              - Sunday    -> cream-sunday (fauxback)
+                                                                                              - Sunday    -> steelheads (Negro League throwback)
                                                                                                 - Monday    -> classic
                                                                                                   - Tuesday   -> claude-inspired
                                                                                                     - Wednesday -> classic
@@ -54,7 +54,8 @@ baseball-terminal/
                                                                                                         - City Connect Rush Blue:  #1B3A8C
                                                                                                         - City Connect Sundown:    #F5C842
                                                                                                         - City Connect Amarillo:   #D4A017
-                                                                                                        - Cream (Sunday fauxback): #F5F0E0
+                                                                                                        - Steelheads Black:  #1A1A1A
+                                                                                                        - Steelheads Charcoal: #2D2D2D
                                                                                                         - Claude Crail:  #C15F3C
                                                                                                         - Claude Pampas: #F4F3EE
                                                                                                         - Claude Cloudy: #B1ADA1
