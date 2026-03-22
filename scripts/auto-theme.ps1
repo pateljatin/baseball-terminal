@@ -50,7 +50,7 @@ function Set-Theme {
 function Set-FullTheme {
   param([string]$Name)
 
-  # Step 1 — switch the Oh My Posh prompt (reuses existing function)
+  # Step 1 — switch Oh My Posh prompt
   Set-Theme $Name
 
   # Step 2 — find Windows Terminal settings.json
@@ -65,31 +65,48 @@ function Set-FullTheme {
     return
   }
 
-  # Step 3 — load wt-schemes.json from repo
+  # Step 3 — load matching scheme from wt-schemes.json
   $SchemesFile = Join-Path $PSScriptRoot "..\teams\$($env:TEAM)\wt-schemes.json"
   if (-not (Test-Path $SchemesFile)) {
-    Write-Warning "wt-schemes.json not found at $SchemesFile"
+    Write-Warning "wt-schemes.json not found — prompt theme applied, color scheme skipped"
     return
   }
 
-  $NewScheme = Get-Content $SchemesFile | ConvertFrom-Json | Where-Object { $_.name -eq $Name }
+  $AllSchemes = Get-Content $SchemesFile -Raw | ConvertFrom-Json
+  $NewScheme  = $AllSchemes | Where-Object { $_.name -eq $Name }
   if (-not $NewScheme) {
     Write-Warning "No color scheme named '$Name' in wt-schemes.json"
     return
   }
 
-  # Step 4 — upsert scheme into settings.json and set as default
-  $Settings = Get-Content $WtSettings | ConvertFrom-Json
-  if (-not $Settings.schemes) { $Settings | Add-Member -NotePropertyName schemes -NotePropertyValue @() -Force }
-  $Existing = $Settings.schemes | Where-Object { $_.name -eq $Name }
-  if ($Existing) {
-    $Settings.schemes = $Settings.schemes | Where-Object { $_.name -ne $Name }
+  # Step 4 — read raw settings.json text
+  $Raw = Get-Content $WtSettings -Raw
+
+  # Step 5 — upsert scheme into "schemes" array using raw JSON string manipulation
+  # Build the new scheme JSON block (single line, no trailing comma issues)
+  $SchemeJson = $NewScheme | ConvertTo-Json -Depth 5 -Compress
+
+  # Remove existing scheme with this name if present
+  # Matches from opening { containing "name":"<Name>" to the closing }, including trailing comma/whitespace
+  $Raw = $Raw -replace ('(?s),?\s*\{[^{}]*"name"\s*:\s*"' + [regex]::Escape($Name) + '"[^{}]*\}'), ''
+
+  # Insert new scheme at the start of the schemes array
+  $Raw = $Raw -replace '"schemes"\s*:\s*\[', ('"schemes": [' + $SchemeJson + ',')
+
+  # Step 6 — update colorScheme in profiles.defaults
+  if ($Raw -match '"defaults"\s*:\s*\{[^{}]*"colorScheme"') {
+    # Replace existing colorScheme value inside defaults
+    $Raw = $Raw -replace '("defaults"\s*:\s*\{[^{}]*"colorScheme"\s*:\s*")[^"]*(")', ('${1}' + $Name + '${2}')
+  } elseif ($Raw -match '"defaults"\s*:\s*\{') {
+    # Add colorScheme into existing defaults block
+    $Raw = $Raw -replace '("defaults"\s*:\s*\{)', ('${1}"colorScheme": "' + $Name + '", ')
+  } else {
+    # Add defaults block with colorScheme into profiles
+    $Raw = $Raw -replace '("profiles"\s*:\s*\{)', ('${1}"defaults": { "colorScheme": "' + $Name + '" }, ')
   }
-  $Settings.schemes += $NewScheme
-  if (-not $Settings.profiles) { $Settings | Add-Member -NotePropertyName profiles -NotePropertyValue @{} }
-  if (-not $Settings.profiles.defaults) { $Settings.profiles | Add-Member -NotePropertyName defaults -NotePropertyValue @{} }
-  $Settings.profiles.defaults | Add-Member -NotePropertyName colorScheme -NotePropertyValue $Name -Force
-  $Settings | ConvertTo-Json -Depth 20 | Set-Content $WtSettings
+
+  # Step 7 — write back
+  $Raw | Set-Content $WtSettings -Encoding UTF8 -NoNewline
 
   Write-Host "Full theme: $Name (prompt + terminal colors)" -ForegroundColor DarkCyan
 }
