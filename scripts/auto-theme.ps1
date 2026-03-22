@@ -80,7 +80,7 @@ function Set-FullTheme {
 
   # Step 4 — upsert scheme into settings.json and set as default
   $Settings = Get-Content $WtSettings | ConvertFrom-Json
-  if (-not $Settings.schemes) { $Settings | Add-Member -NotePropertyName schemes -NotePropertyValue @() }
+  if (-not $Settings.schemes) { $Settings | Add-Member -NotePropertyName schemes -NotePropertyValue @() -Force }
   $Existing = $Settings.schemes | Where-Object { $_.name -eq $Name }
   if ($Existing) {
     $Settings.schemes = $Settings.schemes | Where-Object { $_.name -ne $Name }
